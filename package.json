@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0"
@@ -19,5 +20,21 @@
     "eslint": "8.16.0",
     "eslint-config-next": "12.1.6",
     "typescript": "^4.7.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "next/babel",
+        {
+          "preset-react": {
+            "runtime": "automatic",
+            "importSource": "@emotion/react"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@emotion/babel-plugin"
+    ]
   }
 }
