@@ -12,6 +12,7 @@ const appStyle = css`
     flex: 1 1;
     align-self: center;
     width: 100%;
+    max-width: 480px;
   }
 
   &>header {

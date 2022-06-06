@@ -82,9 +82,9 @@ export default function Questionnaire() {
 			}
 			)}
 			<nav css={navStyle}>
-				<button css={buttonStyle} onClick={prevQuestion}>Zurück</button>
+				<button css={buttonStyle} onClick={prevQuestion}>‹ Zurück</button>
 				{(() => {
-					if (complete) return <Link css={buttonStyle} href={`/result?r=${getResultFromAnswers(answers)}`}>Fertig</Link>
+					if (complete) return <Link href={`/result?r=${getResultFromAnswers(answers)}`}><a css={buttonStyle}>zur Auswertung ›</a></Link>
 
 					return <button css={buttonStyle} onClick={nextQuestion}>Weiter ›</button>
 				})()}
