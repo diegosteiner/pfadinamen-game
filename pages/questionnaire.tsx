@@ -1,9 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
-import { QuestionAnswer, questions } from "../models/question";
+import { Question, QuestionAnswer, questions as orderedQuestions } from "../models/question";
 import { css } from '@emotion/react'
 import buttonStyle from "../styles/buttons";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const navStyle = css`
@@ -39,14 +38,16 @@ const containerStyle = css`
 
 
 function getResultFromAnswers(answers: QuestionAnswer[]): number {
-	return Array.from(answers).reduce((sum, value, index) => {
-		return sum + (2 ** (index || 0) * (value?.value || 0))
+	return Array.from(answers).reduce((sum, answer) => {
+		if (!answer) return sum;
+		return sum + (answer.weight * answer.value)
 	}, 0)
 }
 
 export default function Questionnaire() {
 	const [index, setIndex] = useState<number>(0);
 	const [answers, setAnswers] = useState<QuestionAnswer[]>([]);
+	const [questions] = useState<Question[]>(() => orderedQuestions.sort(() => Math.random() - 0.5));
 	const currentQuestion = questions[index];
 	const complete = answers.filter(answer => answer).length == questions.length
 	const prevQuestion = () => setIndex(prev => prev > 0 ? prev - 1 : 0);

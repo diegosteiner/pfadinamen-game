@@ -11,6 +11,7 @@ const buttonStyle = css`
 	font-family: "Droid Sans", sans-serif;
 	width: 100%;
   display: block;
+	cursor: pointer;
 
 	&.primary {
 		background-color: #e6500f;
