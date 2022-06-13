@@ -8,6 +8,13 @@ const style = css`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+	padding: 1rem;
+
+  a {
+    font-size: 2em;
+    padding: 1em;
+  }
+
 `
 
 export default function Home() {

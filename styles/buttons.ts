@@ -7,7 +7,7 @@ const buttonStyle = css`
 	line-height: 2.5rem;
 	padding: 0.75rem;
 	text-align: center;
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 	font-family: "Droid Sans", sans-serif;
 	width: 100%;
   display: block;

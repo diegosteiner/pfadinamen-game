@@ -7,6 +7,7 @@ const appStyle = css`
   display: flex;
   flex-direction: column;
   background-color: #ffeb00;
+  overflow: hidden;
 
   &>main {
     flex: 1 1;
@@ -16,6 +17,11 @@ const appStyle = css`
   }
 
   &>header {
+    min-height: 2rem;
+  }
+
+  &>footer {
+    min-height: 2rem;
   }
 }
 `

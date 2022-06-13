@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
-import { Question, QuestionAnswer, questions as orderedQuestions } from "../models/question";
+import { Question, QuestionAnswer, questions as orderedQuestions } from "../data";
 import { css } from '@emotion/react'
 import buttonStyle from "../styles/buttons";
 import Link from "next/link";
@@ -8,11 +8,13 @@ import Link from "next/link";
 const navStyle = css`
 	display: grid;
 	width: 100%;
-	grid-template-columns: 1fr 3fr;
+	grid-template-columns: 1fr 1fr;
 	grid-gap: 0.5rem;
 	padding: 0.5rem;
 
 	button {
+		font-size: 0.9rem;
+		font-weight: normal;
 		background-color: transparent;
 	}
 `
