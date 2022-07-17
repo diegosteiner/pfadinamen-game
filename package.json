@@ -14,6 +14,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "next": "12.1.6",
+    "next-ssl-redirect-middleware": "^0.1.3",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },

@@ -39,8 +39,8 @@ export const questions: Question[] = [
     id: 4,
     text: "Wo singst du lauter mit? «Alpenrose» oder «Country roads»?",
     answers: [
-     { value: 1, weight: Math.pow(2, 3), text: "Alpenrose" },
-     { value: 0, weight: Math.pow(2, 3), text: "Country roads" },
+     { value: 1, weight: Math.pow(2, 3), text: "«Alpenrose»" },
+     { value: 0, weight: Math.pow(2, 3), text: "«Country roads»" },
     ],
   },
   {
@@ -140,7 +140,7 @@ export const names: { [key: string]: string } = {
   "60": "Jaguar",
   "59": "Dynamo",
   "58": "Wiesel",
-  "57": "Eule",
+  "57": "Salto",
   "56": "Reh",
   "55": "Flipper",
   "54": "Schwalbe",

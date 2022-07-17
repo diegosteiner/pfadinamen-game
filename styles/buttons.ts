@@ -12,9 +12,18 @@ const buttonStyle = css`
 	width: 100%;
   display: block;
 	cursor: pointer;
+	background-color: rgb(233, 233, 237);
+
+	&:hover {
+		opacity: 0.9;
+	}
 
 	&.primary {
 		background-color: #e6500f;
+	}
+
+	&.transparent {
+		background-color: transparent;
 	}
 `
 

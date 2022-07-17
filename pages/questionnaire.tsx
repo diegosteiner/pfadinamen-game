@@ -66,8 +66,9 @@ export default function Questionnaire() {
 	return (
 		<main css={containerStyle}>
 			<Head>
-				<title>Create Next App</title>
+				<title>Pfadinamen Generator</title>
 				<link rel="icon" href="/favicon.ico" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</Head>
 
 			<h2>{currentQuestion.text}</h2>
@@ -85,11 +86,11 @@ export default function Questionnaire() {
 			}
 			)}
 			<nav css={navStyle}>
-				<button css={buttonStyle} onClick={prevQuestion}>‹ Zurück</button>
+				<button css={buttonStyle} className="transparent" onClick={prevQuestion}>‹ Zurück</button>
 				{(() => {
-					if (complete) return <Link href={`/result?r=${getResultFromAnswers(answers)}`}><a css={buttonStyle}>zur Auswertung ›</a></Link>
+					if (complete) return <Link href={`/result?r=${getResultFromAnswers(answers)}`}><a className="transparent" css={buttonStyle}>zur Auswertung ›</a></Link>
 
-					return <button css={buttonStyle} onClick={nextQuestion}>Weiter ›</button>
+					return <button css={buttonStyle} className="transparent" onClick={nextQuestion}>Weiter ›</button>
 				})()}
 			</nav>
 		</main >
