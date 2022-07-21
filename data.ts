@@ -169,7 +169,7 @@ export const names: { [key: string]: string } = {
   "31": "Kajak",
   "30": "Otter",
   "29": "Kristall",
-  "28": "Hengst",
+  "28": "Okapi",
   "27": "Igel",
   "26": "Fips",
   "25": "Pinguin",
