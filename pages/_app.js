@@ -22,6 +22,13 @@ const appStyle = css`
 
   &>footer {
     min-height: 2rem;
+    font-size: 0.5rem;
+    display: flex;
+    justify-content: center;
+
+    &>* {
+      padding: 0.25rem;
+    }
   }
 }
 `
@@ -31,7 +38,10 @@ function App({ Component, pageProps }) {
     <div css={appStyle}>
       <header></header>
       <Component {...pageProps} />
-      <footer></footer>
+      <footer>
+        <a href="https://pfadinamen.ch/">Pfadinamen-Verzeichnis</a>
+        <a href="https://pfadinamen.dahätsdi.ch/">AI Pfadinamen-Generator</a>
+      </footer>
     </div>)
 }
 

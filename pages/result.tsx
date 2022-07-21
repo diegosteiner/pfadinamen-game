@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { FormEvent, useRef, useState } from 'react'
 import { names } from '../data'
 import buttonStyle from '../styles/buttons'
 
@@ -25,8 +26,16 @@ const style = css`
 		text-align: center;
 	}
 
-	.links {
-		font-size: 0.8rem;
+	input {
+		width: 100%;
+		background-color: white;
+		border: 1px solid gray;
+		font-size: 1.5rem;
+		border-radius: 0.25rem;
+		padding: 0.5em;
+		text-align: center;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
 	}
 
 	@keyframes reveal {
@@ -36,10 +45,31 @@ const style = css`
 	}
 `
 
+const secondaryButtonStyle = css`
+	font-weight: normal;
+`
 
 export function Result() {
 	const router = useRouter()
-	const name = resolveName(router.query.r)
+	const nameNr = router.query.r
+	const name = resolveName(nameNr)
+	const nameRef = useRef<HTMLInputElement>(null)
+	const [maySubmit, setMaySubmit] = useState<boolean>(!!nameNr && !!name)
+	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		const realname = nameRef.current?.value
+
+		if (!realname || !maySubmit) return
+
+		fetch("https://n8n.cloud.heimv.ch/webhook/74ab4ad1-7510-43c6-ba33-c53adb9a5d76", {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ realname, name, nameNr })
+		}).then(() => setMaySubmit(false))
+	}
 
 	return (
 		<>
@@ -51,17 +81,16 @@ export function Result() {
 			<main css={style}>
 				<p>Dein Name lautet:</p>
 				<h1>{name}</h1>
-				<div>
-					<Link href="/"><a css={buttonStyle} className="primary">Taufurkunde abholen!</a></Link>
-					<Link href="/"><a css={buttonStyle} className="transparent">Nochmals!</a></Link>
-				</div>
-				<div className='links'>
-					<ul>
-						<li><a href="https://www.mova.ch/">mova Hauptseite</a></li>
-						<li><a href="https://pfadinamen.ch/">Pfadinamen-Verzeichnis</a></li>
-						<li><a href="https://pfadinamen.dahätsdi.ch/">AI Pfadinamen-Generator</a></li>
-					</ul>
-				</div>
+				<form onSubmit={handleSubmit}>
+					<p>Du kannst deine Taufurkunde im <strong>Kaleidoskop</strong> auf dem BuLavard abholen.
+						{maySubmit && <span>Bitte nenne uns dafür: </span>}
+					</p>
+					{maySubmit && <>
+						<input name="realname" ref={nameRef} placeholder="Dein Vor- und Nachname" />
+						<button type='submit' css={buttonStyle} className="primary">Taufurkunde abholen!</button>
+					</>}
+					<Link href="/"><a css={[buttonStyle, secondaryButtonStyle]} className="transparent">Nochmals!</a></Link>
+				</form>
 			</main>
 		</>
 	)
