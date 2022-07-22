@@ -6,6 +6,13 @@ import { FormEvent, useRef, useState } from 'react'
 import { names } from '../data'
 import buttonStyle from '../styles/buttons'
 
+enum SubmitState {
+	Invalid,
+	Valid,
+	Submitting,
+	Submitted
+}
+
 function resolveName(param?: string | string[]): string | undefined {
 	if (Array.isArray(param)) param = Array.from(param).at(-1)
 	if (!param || !Object.keys(names).includes(param)) return 'vermutlich Cosinus'
@@ -38,6 +45,10 @@ const style = css`
 		margin-bottom: 0.5rem;
 	}
 
+	[disabled] {
+		opacity: 0.5;
+	}
+
 	@keyframes reveal {
 		100% {
 			transform: scale(1.2) rotate(3deg)
@@ -54,12 +65,13 @@ export function Result() {
 	const nameNr = router.query.r
 	const name = resolveName(nameNr)
 	const nameRef = useRef<HTMLInputElement>(null)
-	const [maySubmit, setMaySubmit] = useState<boolean>(!!nameNr && !!name)
+	const [submitState, setSubmitState] = useState<SubmitState>(SubmitState.Invalid)
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		const realname = nameRef.current?.value
 
-		if (!realname || !maySubmit) return
+		if (!realname || submitState != SubmitState.Valid) return
+		setSubmitState(SubmitState.Submitting)
 
 		fetch("https://n8n.cloud.heimv.ch/webhook/74ab4ad1-7510-43c6-ba33-c53adb9a5d76", {
 			method: 'POST',
@@ -68,7 +80,7 @@ export function Result() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({ realname, name, nameNr })
-		}).then(() => setMaySubmit(false))
+		}).then(() => setSubmitState(SubmitState.Submitted)).catch(() => setSubmitState(SubmitState.Invalid))
 	}
 
 	return (
@@ -83,11 +95,12 @@ export function Result() {
 				<h1>{name}</h1>
 				<form onSubmit={handleSubmit}>
 					<p>Du kannst deine Taufurkunde im <strong>Kaleidoskop</strong> auf dem BuLavard abholen.
-						{maySubmit && <span>Bitte nenne uns dafür: </span>}
+						{submitState == SubmitState.Invalid && <span> Bitte nenne uns dafür: </span>}
+						{submitState == SubmitState.Submitted && <span> Deine Daten wurden übermittelt. </span>}
 					</p>
-					{maySubmit && <>
-						<input name="realname" ref={nameRef} placeholder="Dein Vor- und Nachname" />
-						<button type='submit' css={buttonStyle} className="primary">Taufurkunde abholen!</button>
+					{submitState != SubmitState.Submitted && <>
+						<input name="realname" onChange={(event) => setSubmitState(event.target.value.length > 4 ? SubmitState.Valid : SubmitState.Invalid)} ref={nameRef} placeholder="Dein Vor- und Nachname" disabled={submitState == SubmitState.Submitting} />
+						<button type='submit' css={buttonStyle} className="primary" disabled={submitState == SubmitState.Submitting || submitState == SubmitState.Invalid}>Taufurkunde abholen!</button>
 					</>}
 					<Link href="/"><a css={[buttonStyle, secondaryButtonStyle]} className="transparent">Nochmals!</a></Link>
 				</form>
