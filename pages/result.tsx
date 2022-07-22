@@ -15,7 +15,7 @@ enum SubmitState {
 
 function resolveName(param?: string | string[]): string | undefined {
 	if (Array.isArray(param)) param = Array.from(param).at(-1)
-	if (!param || !Object.keys(names).includes(param)) return 'vermutlich Cosinus'
+	if (!param || !Object.keys(names).includes(param)) return 'Haxxor'
 
 	return names[param]
 }
@@ -41,8 +41,11 @@ const style = css`
 		border-radius: 0.25rem;
 		padding: 0.5em;
 		text-align: center;
-		margin-top: 0.5rem;
 		margin-bottom: 0.5rem;
+	}
+
+	p {
+		line-height: 1.5em;
 	}
 
 	[disabled] {
@@ -64,13 +67,18 @@ export function Result() {
 	const router = useRouter()
 	const nameNr = router.query.r
 	const name = resolveName(nameNr)
-	const nameRef = useRef<HTMLInputElement>(null)
+	const firstnameRef = useRef<HTMLInputElement>(null)
+	const lastnameRef = useRef<HTMLInputElement>(null)
 	const [submitState, setSubmitState] = useState<SubmitState>(SubmitState.Invalid)
+	const validate = () =>
+		setSubmitState((firstnameRef.current?.value?.length ?? 0) > 1 && (lastnameRef.current?.value?.length ?? 0) > 1 ? SubmitState.Valid : SubmitState.Invalid)
 	const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		const realname = nameRef.current?.value
+		if (submitState != SubmitState.Valid) return
 
-		if (!realname || submitState != SubmitState.Valid) return
+		const firstname = firstnameRef.current?.value
+		const lastname = lastnameRef.current?.value
+
 		setSubmitState(SubmitState.Submitting)
 
 		fetch("https://n8n.cloud.heimv.ch/webhook/74ab4ad1-7510-43c6-ba33-c53adb9a5d76", {
@@ -79,7 +87,7 @@ export function Result() {
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ realname, name, nameNr })
+			body: JSON.stringify({ firstname, lastname, nameNr, name })
 		}).then(() => setSubmitState(SubmitState.Submitted)).catch(() => setSubmitState(SubmitState.Invalid))
 	}
 
@@ -94,12 +102,11 @@ export function Result() {
 				<p>Dein Name lautet:</p>
 				<h1>{name}</h1>
 				<form onSubmit={handleSubmit}>
-					<p>Du kannst deine Taufurkunde im <strong>Kaleidoskop</strong> auf dem BuLavard abholen.
-						{submitState == SubmitState.Invalid && <span> Bitte nenne uns dafür: </span>}
-						{submitState == SubmitState.Submitted && <span> Deine Daten wurden übermittelt. </span>}
-					</p>
+					{submitState == SubmitState.Invalid && <p>Wenn du noch keinen Pfadinamen hast, kannst dir eine Taufurkunde ausstellen lassen und sie beim Infostand der Schweizerischen Pfadistiftung abholen. Bitte gib dafür deinen Vor- und Nachnamen an:</p>}
+					{submitState == SubmitState.Submitted && <p>🥳 Du kannst deine Taufurkunde jetzt beim Infostand der Schweizerischen Pfadistiftung abholen.</p>}
 					{submitState != SubmitState.Submitted && <>
-						<input name="realname" onChange={(event) => setSubmitState(event.target.value.length > 4 ? SubmitState.Valid : SubmitState.Invalid)} ref={nameRef} placeholder="Dein Vor- und Nachname" disabled={submitState == SubmitState.Submitting} />
+						<input name="firstname" onChange={() => validate()} ref={firstnameRef} placeholder="Vorname" disabled={submitState == SubmitState.Submitting} />
+						<input name="last" onChange={() => validate()} ref={lastnameRef} placeholder="Nachname" disabled={submitState == SubmitState.Submitting} />
 						<button type='submit' css={buttonStyle} className="primary" disabled={submitState == SubmitState.Submitting || submitState == SubmitState.Invalid}>Taufurkunde abholen!</button>
 					</>}
 					<Link href="/"><a css={[buttonStyle, secondaryButtonStyle]} className="transparent">Nochmals!</a></Link>

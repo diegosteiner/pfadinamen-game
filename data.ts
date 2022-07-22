@@ -198,6 +198,6 @@ export const names: { [key: string]: string } = {
   "2": "Schildchrott",
   "1": "Fennek",
   "0": "Merkur",
-  "1337": "Filou",
-  "420": "Snoop"
+  "420": "Snoop D.",
+  "1337": "Cosinus"
 }
