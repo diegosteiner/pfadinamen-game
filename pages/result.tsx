@@ -101,16 +101,8 @@ export function Result() {
 			<main css={style}>
 				<p>Dein Name lautet:</p>
 				<h1>{name}</h1>
-				<form onSubmit={handleSubmit}>
-					{submitState == SubmitState.Invalid && <p>Wenn du noch keinen Pfadinamen hast, kannst dir eine Taufurkunde ausstellen lassen und sie beim Infostand der Schweizerischen Pfadistiftung abholen. Bitte gib dafür deinen Vor- und Nachnamen an:</p>}
-					{submitState == SubmitState.Submitted && <p>🥳 Du kannst deine Taufurkunde jetzt beim Infostand der Schweizerischen Pfadistiftung abholen.</p>}
-					{submitState != SubmitState.Submitted && <>
-						<input name="firstname" onChange={() => validate()} ref={firstnameRef} placeholder="Vorname" disabled={submitState == SubmitState.Submitting} />
-						<input name="last" onChange={() => validate()} ref={lastnameRef} placeholder="Nachname" disabled={submitState == SubmitState.Submitting} />
-						<button type='submit' css={buttonStyle} className="primary" disabled={submitState == SubmitState.Submitting || submitState == SubmitState.Invalid}>Taufurkunde abholen!</button>
-					</>}
-					<Link href="/"><a css={[buttonStyle, secondaryButtonStyle]} className="transparent">Nochmals!</a></Link>
-				</form>
+				<p>🥳 Wir wünschen dir viele spannende Pfadiabenteuer.</p>
+				<Link href="/" css={[buttonStyle, secondaryButtonStyle]} className="transparent">Nochmals!</Link>
 			</main>
 		</>
 	)

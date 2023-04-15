@@ -46,7 +46,7 @@ export default function Home() {
           Schoggibanane? Sie zeigt uns, ob du lieber Salziges oder Süsses isst. So finden wir
           gemeinsam den passenden Pfadinamen für dich heraus!
         </p>
-        <Link href="/questionnaire"><a css={buttonStyle} className="primary">Pfadiname finden!</a></Link>
+        <Link href="/questionnaire" css={buttonStyle} className="primary">Pfadiname finden!</Link>
       </main>
     </>
   )
