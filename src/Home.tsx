@@ -1,37 +1,11 @@
-import { css } from '@emotion/react';
-import Head from 'next/head'
-import Link from 'next/link';
-import buttonStyle from '../styles/buttons';
+// import { useState } from 'react'
+import css from './Home.module.css'
 
-
-const style = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-	padding: 1rem;
-
-  a {
-    font-size: 2em;
-    padding: 1em;
-  }
-
-  p {
-    line-height: 1.65em;
-  }
-
-`
-
-export default function Home() {
+function Home() {
+  // const [count, setCount] = useState(0)
 
   return (
-    <>
-      <Head>
-        <title>Pfadinamen Generator</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
-      <main css={style}>
+      <main className={css.home}>
         <h1>Pfadinamen</h1>
         <p>
           In der Schweiz gibt es die Tradition der Pfadinamen. Zumindest in der Deutschschweiz sind
@@ -46,8 +20,9 @@ export default function Home() {
           Schoggibanane? Sie zeigt uns, ob du lieber Salziges oder Süsses isst. So finden wir
           gemeinsam den passenden Pfadinamen für dich heraus!
         </p>
-        <Link href="/questionnaire" css={buttonStyle} className="primary">Pfadiname finden!</Link>
+        <a href="/questionnaire" className="button primary">Pfadiname finden!</a>
       </main>
-    </>
   )
 }
+
+export default Home
