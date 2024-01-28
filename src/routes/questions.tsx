@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Question, QuestionAnswer, questions as orderedQuestions } from "../data";
-import styles from './questions.module.css'
-import appStyles from '../App.module.css'
 import { createFileRoute } from "@tanstack/react-router";
-import { clsx } from 'clsx';
+import clsx from "clsx";
 
 export const Route = createFileRoute('/questions')({
   component: Questionnaire,
@@ -36,29 +34,30 @@ function Questionnaire() {
 	};
 
 	return (
-		<main className={styles.conainer}>
-			<h2>{currentQuestion.text}</h2>
+		<div className="h-full flex flex-col gap-4">
+			<h2 className="font-bold text-2xl my-auto">{currentQuestion.text}</h2>
 			<small>{`Frage ${index + 1} / ${questions.length}`}</small>
 			{currentQuestion.answers.map((answer) => {
-				// const selected = Array.from(answers).includes(answer)
+				const selected = Array.from(answers).includes(answer)
 
 				return <button
 					key={`${index}-${answer.value}`}
-					className={styles.activeAnswer}
+					className={clsx( "h-1/6 rounded font-bold text-lg shadow", selected ? "bg-red" : "bg-slate-100")}
 					onClick={() => setAnswer(index, answer)}
 				>
 					{answer.text}
 				</button>
 			}
 			)}
-			<nav className={styles.nav}>
-				<button className={clsx([appStyles.button, "transparent"])} onClick={prevQuestion}>‹ Zurück</button>
-				{(() => {
-					if (complete) return <a href={`/result?r=${getResultFromAnswers(answers)}`} className={clsx(appStyles.button, "transparent")}>zur Auswertung ›</a>
 
-					return <button className={clsx(appStyles.button, { transparent: true })} onClick={nextQuestion}>Weiter ›</button>
+			<nav className="w-full grid grid-cols-2 gap-2 py-10">
+				<button className="p-4" onClick={prevQuestion}>‹ Zurück</button>
+				{(() => {
+					if (complete) return <a href={`/result?r=${getResultFromAnswers(answers)}`} className="">zur Auswertung ›</a>
+
+					return <button className="p-4" onClick={nextQuestion}>Weiter ›</button>
 				})()}
 			</nav>
-		</main >
+		</div>
 	);
 }
