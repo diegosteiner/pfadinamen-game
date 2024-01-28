@@ -1,9 +1,11 @@
-// import { useState } from 'react'
-import css from './Home.module.css'
+import { createFileRoute } from '@tanstack/react-router'
+import styles from './index.module.css'
 
-function Home() {
-  // const [count, setCount] = useState(0)
+export const Route = createFileRoute('/')({
+  component: Index,
+})
 
+function Index() {
   return (
       <main className={css.home}>
         <h1>Pfadinamen</h1>
@@ -20,9 +22,7 @@ function Home() {
           Schoggibanane? Sie zeigt uns, ob du lieber Salziges oder Süsses isst. So finden wir
           gemeinsam den passenden Pfadinamen für dich heraus!
         </p>
-        <a href="/questionnaire" className="button primary">Pfadiname finden!</a>
+        <a href="/questions" className={}>Pfadiname finden!</a>
       </main>
   )
 }
-
-export default Home

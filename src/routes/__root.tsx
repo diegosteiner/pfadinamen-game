@@ -1,16 +1,14 @@
-import css from "./App.module.css"
-import Home from "./Home"
+import { Outlet, createRootRoute } from '@tanstack/react-router'
+import css from '../App.module.css'
 
-function App() {
-  return (
+export const Route = createRootRoute({
+  component: () => (
     <div className={css.app}>
-      <header></header>
-      <Home />
+      <Outlet />
       <footer>
         <a href="https://pfadinamen.ch/">Pfadinamen-Verzeichnis</a>
         <a href="https://pfadinamen.dahätsdi.ch/">AI Pfadinamen-Generator</a>
       </footer>
-    </div>)
-}
-
-export default App
+    </div>
+  ),
+})
