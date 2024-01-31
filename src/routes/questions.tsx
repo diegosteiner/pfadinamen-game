@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Question, QuestionAnswer, questions as orderedQuestions } from "../data";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import clsx from "clsx";
 
 export const Route = createFileRoute('/questions')({
@@ -53,7 +53,7 @@ function Questionnaire() {
 			<nav className="w-full grid grid-cols-2 gap-2 py-10">
 				<button className="p-4" onClick={prevQuestion}>‹ Zurück</button>
 				{(() => {
-					if (complete) return <a href={`/result?r=${getResultFromAnswers(answers)}`} className="">zur Auswertung ›</a>
+					if (complete) return <Link to="/result" search={({ r: getResultFromAnswers(answers) })} className="p-4 font-bold">zur Auswertung ›</Link>
 
 					return <button className="p-4" onClick={nextQuestion}>Weiter ›</button>
 				})()}

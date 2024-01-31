@@ -13,6 +13,15 @@ export default {
       },
       fontFamily: {
         'sans': ['Droid sans', 'ui-sans-serif', 'system-ui']
+      },
+      animation: {
+        'result': '3s linear 0s infinite alternate none running result'
+      },
+      keyframes: {
+        'result': {
+          '0%': 'transform: scale(0) rotate(0)',
+          '100%': 'transform: scale(1.2) rotate(3deg)'
+        }
       }
     },
   },

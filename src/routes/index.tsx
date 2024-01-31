@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -24,7 +24,7 @@ function Index() {
         </p>
       </div>
       <div className='flex flex-col flex-grow justify-center'>
-        <a className="bg-red block text-center p-8 text-3xl font-bold rounded" href="/questions">Pfadiname finden!</a>
+        <Link to="/questions" className="bg-red block text-center p-8 text-3xl font-bold rounded shadow">Pfadiname finden!</Link>
       </div>
     </div>
   )
