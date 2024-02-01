@@ -42,7 +42,7 @@ function Questionnaire() {
 
 				return <button
 					key={`${index}-${answer.value}`}
-					className={clsx( "h-1/6 rounded font-bold text-lg shadow", selected ? "bg-red" : "bg-slate-100")}
+					className={clsx( "h-1/6 rounded font-bold text-3xl shadow", selected ? "bg-red-200 underline" : "bg-secondary")}
 					onClick={() => setAnswer(index, answer)}
 				>
 					{answer.text}

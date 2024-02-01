@@ -8,7 +8,7 @@ function Index() {
   return (
     <div className='flex flex-col h-full'>
       <div>
-        <h1 className='my-20 text-4xl font-bold'>Pfadinamen</h1>
+        <h1 className='my-20 text-4xl font-bold'>Wie lautet dein Pfadiname?</h1>
         <p className='mb-10'>
           In der Schweiz gibt es die Tradition der Pfadinamen. Zumindest in der Deutschschweiz sind
           Pfadinamen eine wichtige und bedeutungsvolle Besonderheit der Pfadibewegung.
@@ -24,7 +24,7 @@ function Index() {
         </p>
       </div>
       <div className='flex flex-col flex-grow justify-center'>
-        <Link to="/questions" className="bg-red block text-center p-8 text-3xl font-bold rounded shadow">Pfadiname finden!</Link>
+        <Link to="/questions" className="bg-secondary block text-center p-8 text-3xl font-bold rounded shadow">Pfadiname finden!</Link>
       </div>
     </div>
   )

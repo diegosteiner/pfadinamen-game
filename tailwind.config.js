@@ -7,12 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        yellow: "#ffeb00",
-        red: "#e6500f",
+        primary: "#e6500f",
+        secondary: "#f5eeeb",
         black: "#290e03"
       },
       fontFamily: {
-        'sans': ['Droid sans', 'ui-sans-serif', 'system-ui']
+        'sans': ["HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
+                  'Helvetica', 'Arial', "Lucida Grande", 'sans-serif', 'ui-sans-serif', 'system-ui']
       },
       animation: {
         'result': '3s linear 0s infinite alternate none running result'
