@@ -4,13 +4,14 @@ import react from "@vitejs/plugin-react";
 import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa'
 
 const pwaOptions: Partial<VitePWAOptions> = {
-  mode: 'development',
-  // includeAssets: ['favicon.svg'],
+  includeAssets: [
+      "**/*",
+  ],
   registerType: 'autoUpdate',
   workbox: {
     clientsClaim: true,
-    skipWaiting: true
-  //   globPatterns: ['**/*.{js,css,html}'],
+    skipWaiting: true,
+    globPatterns: ["**/*"],
   },
   manifest: {
     name: 'Pfadinamen Finder',
@@ -31,7 +32,7 @@ const pwaOptions: Partial<VitePWAOptions> = {
     ],
   },
   devOptions: {
-    enabled: true,
+    enabled: process.env.NODE_ENV !== 'production',
     type: 'module',
     navigateFallback: 'index.html',
   },
