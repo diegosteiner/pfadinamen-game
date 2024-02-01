@@ -53,9 +53,9 @@ function Questionnaire() {
 			<nav className="w-full grid grid-cols-2 gap-2 py-10">
 				<button className="p-4" onClick={prevQuestion}>‹ Zurück</button>
 				{(() => {
-					if (complete) return <Link to="/result" search={({ r: getResultFromAnswers(answers) })} className="p-4 font-bold">zur Auswertung ›</Link>
+					if (complete) return <Link to="/result" search={({ r: getResultFromAnswers(answers) })} className="p-4 font-bold text-center">zur Auswertung ›</Link>
 
-					return <button className="p-4" onClick={nextQuestion}>Weiter ›</button>
+					return <button className="p-4 text-center" onClick={nextQuestion}>Weiter ›</button>
 				})()}
 			</nav>
 		</div>

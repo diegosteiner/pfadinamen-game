@@ -7,48 +7,6 @@ export const Route = createFileRoute('/result')({
   component: Result,
 })
 
-// const style = css`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-// 	padding: 1rem;
-		
-// 	h1 {
-// 		font-size: 3em;
-// 		word-break: break-word;
-// 		animation: reveal 3s linear infinite alternate;
-// 		text-align: center;
-// 	}
-
-// 	input {
-// 		width: 100%;
-// 		background-color: white;
-// 		border: 1px solid gray;
-// 		font-size: 1.5rem;
-// 		border-radius: 0.25rem;
-// 		padding: 0.5em;
-// 		text-align: center;
-// 		margin-bottom: 0.5rem;
-// 	}
-
-// 	p {
-// 		line-height: 1.5em;
-// 	}
-
-// 	[disabled] {
-// 		opacity: 0.5;
-// 	}
-
-// 	@keyframes reveal {
-// 		100% {
-// 			transform: scale(1.2) rotate(3deg)
-// 		}
-// 	}
-// `
-
-// const secondaryButtonStyle = css`
-// 	font-weight: normal;
-// `
 
 export function Result() {
 	const { r: nameIndex } = Route.useSearch() 

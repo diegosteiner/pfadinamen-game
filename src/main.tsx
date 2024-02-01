@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import './index.css'
-
+import { registerSW } from "virtual:pwa-register";
 
 const router = createRouter({ routeTree })
 
+if ("serviceWorker" in navigator) {
+  // && !/localhost/.test(window.location)) {
+  registerSW();
+}
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router
