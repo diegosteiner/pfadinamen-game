@@ -35,8 +35,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: docker tag
-        run: docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}/pfadinamen-game:${{ github.ref_name }}
-
       - name: docker push
-        run: docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+        run: |
+          docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}/pfadinamen-game:${{ github.ref_name }}
+          docker push ghcr.io/${{ github.repository }}/pfadinamen-game:${{ github.ref_name }}
