@@ -1,3 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@theme {
+  --font-display: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande",
+    "sans-serif", "ui-sans-serif", "system-ui";
+
+  --color-primary: #e6500f;
+  --color-secondary: #f5eeeb;
+  --color-black: #290e03;
+
+  --animate-result: result 3s linear 0s infinite alternate none running;
+  @keyframes result {
+    0% {
+      transform: scale(0.9) rotate(0);
+    }
+    100% {
+      transform: scale(1.3) rotate(3deg);
+    }
+  }
+}

@@ -16,9 +16,9 @@ export function Result() {
   return (
     <div className="flex flex-col h-full justify-around">
       <p>Dein Name lautet:</p>
-      <h1 className="text-center animate-pulse text-5xl font-bold p-10">{name}</h1>
+      <h1 className="text-center animate-result text-5xl font-bold p-10">{name}</h1>
       <p className="text-center py-4">🥳 Wir wünschen dir viele spannende Pfadiabenteuer.</p>
-      <Link to="/" className="bg-secondary font-lg rounded shadow p-4 text-center">
+      <Link to="/" className="bg-secondary font-lg rounded-sm shadow-sm p-4 text-center">
         Nochmals!
       </Link>
     </div>

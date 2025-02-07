@@ -21,8 +21,8 @@ function Index() {
           gemeinsam den passenden Pfadinamen für dich heraus!
         </p>
       </div>
-      <div className="flex flex-col flex-grow justify-center">
-        <Link to="/questions" className="bg-secondary block text-center p-8 text-3xl font-bold rounded shadow">
+      <div className="flex flex-col grow justify-center">
+        <Link to="/questions" className="bg-secondary block text-center p-8 text-3xl font-bold rounded-sm shadow-sm">
           Pfadiname finden!
         </Link>
       </div>
