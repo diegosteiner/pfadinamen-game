@@ -15,56 +15,56 @@ export const questions: Question[] = [
     id: 1,
     text: "Bist du gross oder klein?",
     answers: [
-     { value: 1, weight: Math.pow(2, 6), text: "gross" },
-     { value: 0, weight: Math.pow(2, 6), text: "klein" },
+      { value: 1, weight: 2 ** 6, text: "gross" },
+      { value: 0, weight: 2 ** 6, text: "klein" },
     ],
   },
   {
     id: 2,
     text: "Läufst du schnell wie der Wind oder eher gemächlich?",
     answers: [
-     { value: 1, weight: Math.pow(2, 5), text: "schnell" },
-     { value: 0, weight: Math.pow(2, 5), text: "gemächlich" },
+      { value: 1, weight: 2 ** 5, text: "schnell" },
+      { value: 0, weight: 2 ** 5, text: "gemächlich" },
     ],
   },
   {
     id: 3,
     text: "Was isst du lieber? Schlangenbrot oder Schoggibanane?",
     answers: [
-     { value: 1, weight: Math.pow(2, 4), text: "Schlangenbrot" },
-     { value: 0, weight: Math.pow(2, 4), text: "Schoggibanane" },
+      { value: 1, weight: 2 ** 4, text: "Schlangenbrot" },
+      { value: 0, weight: 2 ** 4, text: "Schoggibanane" },
     ],
   },
   {
     id: 4,
     text: "Wo singst du lauter mit? «Alpenrose» oder «Country roads»?",
     answers: [
-     { value: 1, weight: Math.pow(2, 3), text: "«Alpenrose»" },
-     { value: 0, weight: Math.pow(2, 3), text: "«Country roads»" },
+      { value: 1, weight: 2 ** 3, text: "«Alpenrose»" },
+      { value: 0, weight: 2 ** 3, text: "«Country roads»" },
     ],
   },
   {
     id: 5,
     text: "Wo machst du lieber mit? Wanderung zum Sonnenaufgang oder Nacht-Geländespiel?",
     answers: [
-     { value: 1, weight: Math.pow(2, 2), text: "Wanderung zum Sonnenaufgang" },
-     { value: 0, weight: Math.pow(2, 2), text: "Nacht-Geländespiel" },
+      { value: 1, weight: 2 ** 2, text: "Wanderung zum Sonnenaufgang" },
+      { value: 0, weight: 2 ** 2, text: "Nacht-Geländespiel" },
     ],
   },
   {
     id: 6,
     text: "Schläfst du lieber im  Spatzzelt oder Blachenzelt?",
     answers: [
-     { value: 1, weight: Math.pow(2, 1), text: "Spatzzelt" },
-     { value: 0, weight: Math.pow(2, 1), text: "Blachenzelt" },
+      { value: 1, weight: 2 ** 1, text: "Spatzzelt" },
+      { value: 0, weight: 2 ** 1, text: "Blachenzelt" },
     ],
   },
   {
     id: 7,
     text: "Orientierst du dich lieber mit Hilfe von Karte/Kompass oder mit Hilfe eines GPS?",
     answers: [
-     { value: 1, weight: Math.pow(2, 0), text: "Karte/Kompass" },
-     { value: 0, weight: Math.pow(2, 0), text: "GPS" },
+      { value: 1, weight: 2 ** 0, text: "Karte/Kompass" },
+      { value: 0, weight: 2 ** 0, text: "GPS" },
     ],
   },
 ];
@@ -199,5 +199,5 @@ export const names: { [key: string]: string } = {
   "1": "Fennek",
   "0": "Merkur",
   "420": "Snoop D.",
-  "1337": "Cosinus"
-}
+  "1337": "Cosinus",
+};
