@@ -37,5 +37,5 @@ jobs:
 
       - name: docker push
         run: |
-          docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}/pfadinamen-game:${{ github.ref_name }}
-          docker push ghcr.io/${{ github.repository }}/pfadinamen-game:${{ github.ref_name }}
+          docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+          docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
