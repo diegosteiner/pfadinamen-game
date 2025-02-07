@@ -35,10 +35,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - if: github.event_name != 'push'
-        name: docker tag
+      - name: docker tag
         run: docker tag ghcr.io/${{ github.repository }}:latest ghcr.io/${{ github.repository }}:${{ github.ref_name }}
 
-      - if: github.event_name != 'pull_request'
-        name: docker push
+      - name: docker push
         run: docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
